@@ -1,11 +1,10 @@
 Shader "Gouraud Shader" {
     Properties{
-        // used for fallback shader
        _Color("Diffuse Material Color", Color) = (1,1,1,1)
        _SpecColor("Specular Material Color", Color) = (1,1,1,1)
        _Shininess("Shininess", Float) =  10
         // the color of the texture assigned to the object
-       _MainTex("Texture Image", 2D) = "grey" {}
+       _MainTex("Texture Image", 2D) = "white" {}
        
     }
         SubShader{
@@ -20,16 +19,15 @@ Shader "Gouraud Shader" {
            #pragma vertex vert  
            #pragma fragment frag 
 
-           #include "UnityCG.cginc"
-           uniform float4 _LightColor0;
-    // color of light source (from "Lighting.cginc")
+           #include "UnityCG.cginc" //Provides us with data such as light and camera
+           uniform float4 _LightColor0; //From UnityCG
 
  // User-specified properties
  uniform float4 _Color;
  uniform float4 _SpecColor;
  uniform float _Shininess;
- uniform sampler2D _MainTex;
- uniform float4 _MainTex_ST;
+ uniform sampler2D _MainTex; // texture
+ uniform float4 _MainTex_ST; // tiles
 
  struct vertexInput {
     float4 vertex : POSITION;
